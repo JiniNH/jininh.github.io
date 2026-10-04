@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grid64: Block Puzzle Game</title>
+
+<!-- 카톡·X 등 링크 미리보기 카드 -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jininh.github.io/grid64/">
+<meta property="og:title" content="Grid64: 블록 퍼즐 게임">
+<meta property="og:description" content="채우고 지우는 8×8 블록 퍼즐 / Fill &amp; Clear 8×8 Block Puzzle">
+<meta property="og:image" content="https://jininh.github.io/grid64/og.png">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="500">
+<meta name="twitter:card" content="summary_large_image">
+
+<script>
+  // ===== 스토어 주소 =====
+  var PLAY_URL = "https://play.google.com/store/apps/details?id=com.jiniworks.grid64";
+  var APPSTORE_URL = "";   // iOS 출시 후 앱스토어 주소를 넣으면 아이폰도 자동 이동
+
+  // 기기를 확인해서 바로 스토어로 (페이지가 그려지기 전에 실행)
+  var ua = navigator.userAgent || "";
+  var isAndroid = /android/i.test(ua);
+  var isIOS = /iphone|ipad|ipod/i.test(ua) ||
+              (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+  if (isAndroid) {
+    location.replace(PLAY_URL);
+  } else if (isIOS && APPSTORE_URL) {
+    location.replace(APPSTORE_URL);
+  }
+</script>
+
+<style>
+  :root { --bg:#234A6E; --ink:#FFFFFF; --soft:#A9D6F2; --btn:#3FA7E0; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+    text-align: center; padding: 24px;
+  }
+  main { max-width: 420px; width: 100%; }
+  img { width: 100%; height: auto; border-radius: 16px; display: block; }
+  h1 { font-size: 24px; margin: 24px 0 6px; }
+  p { color: var(--soft); margin: 0 0 24px; line-height: 1.6; }
+  a.btn {
+    display: inline-block; padding: 14px 28px; border-radius: 14px;
+    background: var(--btn); color: #FFFFFF; font-weight: 700; text-decoration: none;
+  }
+  a.btn:focus-visible { outline: 3px solid var(--soft); outline-offset: 3px; }
+  .note { font-size: 14px; margin-top: 18px; }
+</style>
+</head>
+<body>
+<main>
+  <img src="og.png" alt="Grid64">
+  <h1>Grid64: 블록 퍼즐 게임</h1>
+  <p>채우고 지우는 8×8 블록 퍼즐<br>Fill &amp; Clear 8×8 Block Puzzle</p>
+  <a class="btn" href="https://play.google.com/store/apps/details?id=com.jiniworks.grid64">Google Play에서 보기 / Get on Google Play</a>
+  <p class="note" id="ios-note" hidden>iOS 버전은 준비 중이에요. / iOS version coming soon.</p>
+</main>
+<script>
+  // 아이폰인데 아직 앱스토어 주소가 없으면 안내 문구 표시
+  if (isIOS && !APPSTORE_URL) document.getElementById("ios-note").hidden = false;
+</script>
+</body>
+</html>
